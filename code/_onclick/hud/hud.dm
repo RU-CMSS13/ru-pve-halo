@@ -46,6 +46,15 @@
 	var/atom/movable/screen/toggle_burst
 	var/atom/movable/screen/unique_action
 
+	// RU-PVE ADDITION START
+
+	var/atom/movable/screen/layer_up
+	var/atom/movable/screen/layer_down
+
+	var/atom/movable/screen/roll_dice
+
+	// RU-PVE ADDITION END
+
 	var/atom/movable/screen/zone_sel/zone_sel
 	var/atom/movable/screen/pull_icon
 	var/atom/movable/screen/throw_icon
@@ -141,6 +150,15 @@
 	eject_mag = null
 	toggle_burst = null
 	unique_action = null
+
+	// RU-PVE ADDITION START
+
+	layer_up = null
+	layer_down = null
+
+	roll_dice = null
+
+	// RU-PVE ADDITION END
 
 	zone_sel = null
 	pull_icon = null
