@@ -5,6 +5,8 @@
 	if(CLIENT_HAS_RIGHTS(src, R_BUILDMODE))
 		add_verb(src, /client/proc/roll_dices)
 		add_verb(src, /client/proc/toggle_admin_only_observe)
+		add_verb(src, /client/proc/disallow_to_join)
+		add_verb(src, /client/proc/allow_to_join)
 
 
 /client/remove_admin_verbs()
@@ -12,6 +14,8 @@
 	remove_verb(src, list(
 		/client/proc/roll_dices,
 		/client/proc/toggle_admin_only_observe,
+		/client/proc/disallow_to_join,
+		/client/proc/allow_to_join,
 	))
 
 // TOGGLABLE OBSERVE \\

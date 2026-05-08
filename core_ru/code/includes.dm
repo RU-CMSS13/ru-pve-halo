@@ -6,3 +6,4 @@
 // tools
 #include "gm_tools\admin_tools.dm"
 #include "gm_tools\dice.dm"
+#include "gm_tools\whitelist_tools.dm"
