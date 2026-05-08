@@ -690,17 +690,17 @@
 
 
 	var/message_mode=""
-	if(copytext(message,1,2) == ";")
+	if(copytext_char(message,1,2) == ";")
 		message_mode = "headset"
-		message = copytext(message,2)
+		message = copytext_char(message,2)
 
 	if(length(message) >= 2)
-		var/channel_prefix = lowertext(copytext(message, 1, 3))
+		var/channel_prefix = lowertext(copytext_char(message, 1, 3))
 		message_mode = GLOB.department_radio_keys[channel_prefix]
 
-	if(copytext(message,1,2) == ":")
+	if(copytext_char(message,1,2) == ":")
 		var/positioncut = 3
-		message = trim(copytext(message,positioncut))
+		message = trim(copytext_char(message,positioncut))
 
 	message = capitalize(trim_left(message))
 

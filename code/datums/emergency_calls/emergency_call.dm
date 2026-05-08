@@ -159,6 +159,9 @@
 	if(jobban_isbanned(src, "Syndicate") || jobban_isbanned(src, "Emergency Response Team"))
 		to_chat(src, SPAN_DANGER("You are jobbanned from the emergency response team!"))
 		return
+	if(usr.client.total_enter_lock)
+		to_chat(usr, SPAN_WARNING("You have BLACKLISTED from entering!"))
+		return
 	if(!SSticker.mode || !length(SSticker.mode.picked_calls))
 		to_chat(src, SPAN_WARNING("No distress beacons are active. You will be notified if this changes."))
 		return

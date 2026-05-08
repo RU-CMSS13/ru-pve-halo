@@ -142,7 +142,7 @@ for it but just ignore it.
 
 /mob/proc/say_quote(message, datum/language/speaking = null)
 	var/verb = "says"
-	var/ending = copytext(message, length(message))
+	var/ending = copytext_char(message, length(message))
 	if(ending == "!")
 		verb = pick("exclaims","shouts","yells")
 	else if(ending == "?")
@@ -170,11 +170,11 @@ for it but just ignore it.
 //returns the message mode string or null for no message mode.
 //standard mode is the mode returned for the special ';' radio code.
 /mob/proc/parse_message_mode(message, standard_mode="headset")
-	if(length(message) >= 1 && lowertext(copytext(message, 1, 2)) == ";")
+	if(length(message) >= 1 && lowertext(copytext_char(message, 1, 2)) == ";")
 		return standard_mode
 
 	if(length(message) >= 2)
-		var/channel_prefix = lowertext(copytext(message, 1, 3))
+		var/channel_prefix = lowertext(copytext_char(message, 1, 3))
 		return GLOB.department_radio_keys[channel_prefix]
 
 	return null
@@ -183,10 +183,10 @@ for it but just ignore it.
 ///returns the stripped message
 /mob/proc/strip_language(message)
 	if(length(message) >= 2)
-		var/language_prefix = lowertext(copytext(message, 1, 3))
+		var/language_prefix = lowertext(copytext_char(message, 1, 3))
 		var/datum/language/lang = GLOB.all_languages[GLOB.language_keys[language_prefix]]
 		if(lang)
-			return copytext(message, 3)
+			return copytext_char(message, 3)
 
 	return message
 
