@@ -379,6 +379,10 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 		add_verb(src, /client/proc/toggle_fire_support_menu)
 		add_verb(src, /client/proc/gm_lighting)
 		add_verb(src, /client/proc/toggle_droppod_menu)
+		add_verb(src, /client/proc/roll_dices) // RU-PVE STARTS
+		add_verb(src, /client/proc/toggle_admin_only_observe)
+		add_verb(src, /client/proc/disallow_to_join)
+		add_verb(src, /client/proc/allow_to_join) // RU-PVE ENDS
 	if(CLIENT_HAS_RIGHTS(src, R_SERVER))
 		add_verb(src, GLOB.admin_verbs_server)
 	if(CLIENT_HAS_RIGHTS(src, R_DEBUG))
@@ -425,6 +429,10 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 		/client/proc/toggle_intro,
 		/client/proc/gm_lighting,
 		/client/proc/toggle_droppod_menu,
+		/client/proc/roll_dices, // RU-PVE STARTS
+		/client/proc/toggle_admin_only_observe,
+		/client/proc/disallow_to_join,
+		/client/proc/allow_to_join, // RU-PVE ENDS
 		GLOB.admin_verbs_admin,
 		GLOB.admin_verbs_ban,
 		GLOB.admin_verbs_minor_event,
