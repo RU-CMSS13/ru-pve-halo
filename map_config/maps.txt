@@ -116,6 +116,12 @@ endmap
 map oni_shield_base
 endmap
 
+map halo_new_irvine_covenant
+endmap
+
+map halo_forest_valley
+endmap
+
 map mackay_station
 endmap
 
