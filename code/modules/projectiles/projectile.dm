@@ -366,6 +366,11 @@
 	if(istype(hardpoint))
 		LAZYOR(ignore_list, hardpoint.owner) //if fired from a vehicle, exclude the vehicle's body from the adjacency check
 
+	if(ismob(firer))
+		var/mob/mob_firer = firer
+		if(istype(mob_firer.buckled, /obj/vehicle/multitile))
+			LAZYOR(ignore_list, mob_firer.buckled)
+
 	// Check we can reach the turf at all based on pathed grid
 	if(check_canhit(current_turf, next_turf, ignore_list))
 		return TRUE
@@ -885,6 +890,8 @@
 			. -= mobility_aura * 5
 		if(dodge_pool)
 			. -= dodge_pool * 8
+		if(HAS_TRAIT(src, TRAIT_IN_OPEN_VEHICLE))
+			. -= . / 1.3
 		var/mob/living/carbon/human/shooter_human = P.firer
 		if(istype(shooter_human))
 			if(shooter_human.faction == faction && !(ammo_flags & AMMO_ALWAYS_FF))
@@ -1054,7 +1061,7 @@
 		return
 
 	P.play_hit_effect(src)
-	if(damage || (ammo_flags & AMMO_SPECIAL_EMBED))
+	if(damage_result || (ammo_flags & AMMO_SPECIAL_EMBED))
 
 		var/splatter_dir = get_dir(P.starting, loc)
 		handle_blood_splatter(splatter_dir)
@@ -1062,7 +1069,7 @@
 		. = TRUE
 		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, firer = P.firer)
 
-		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + floor(damage / 10)))
+		if(P.ammo.shrapnel_chance > 0 && (damage_result/damage) > 0.5 && prob(trunc(P.ammo.shrapnel_chance * damage_result/damage)))
 			if(ammo_flags & AMMO_SPECIAL_EMBED)
 				P.ammo.on_embed(src, organ)
 

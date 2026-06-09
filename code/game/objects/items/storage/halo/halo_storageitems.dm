@@ -29,6 +29,11 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/halo/m6c(src)
 
+/obj/item/storage/belt/gun/m6/full_m6c/socom/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/halo/m6c/socom())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/halo/m6c(src)
+
 /obj/item/storage/belt/gun/m6/full_m6g/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/halo/m6g())
 	for(var/i = 1 to storage_slots - 1)
@@ -203,6 +208,103 @@
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
 	new /obj/item/stack/medical/splint(src)
+
+/obj/item/storage/pouch/flare/unsc
+	name = "UNSC illumination equipment pouch"
+	desc = "A pouch designed to hold flares and chemlights. Refillable with flare or chemlight packs."
+	icon = 'icons/halo/obj/items/clothing/pouches.dmi'
+	icon_state = "flare"
+	can_hold = list(
+		/obj/item/device/flashlight/flare/unsc,
+		/obj/item/device/flashlight/flare/signal/unsc,
+		/obj/item/device/flashlight/flare/chemlight,
+	)
+
+/obj/item/storage/pouch/flare/unsc/full/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/device/flashlight/flare/unsc(src)
+
+/obj/item/storage/pouch/flare/unsc/full_random_chemlights/fill_preset_inventory()
+	var/add_glowsticks = rand(1,6)
+	switch(add_glowsticks)
+		if(1)
+			for(var/i = 1 to storage_slots)
+				new /obj/item/device/flashlight/flare/chemlight(src)
+		if(2)
+			for(var/i = 1 to storage_slots)
+				new /obj/item/device/flashlight/flare/chemlight/blue(src)
+		if(3)
+			for(var/i = 1 to storage_slots)
+				new /obj/item/device/flashlight/flare/chemlight/orange(src)
+		if(4)
+			for(var/i = 1 to storage_slots)
+				new /obj/item/device/flashlight/flare/chemlight/red(src)
+		if(5)
+			for(var/i = 1 to storage_slots)
+				new /obj/item/device/flashlight/flare/chemlight/yellow(src)
+		if(6)
+			for(var/i = 1 to storage_slots)
+				new /obj/item/device/flashlight/flare/chemlight/radioisotope(src)
+
+/obj/item/storage/pouch/flare/unsc/chemlight
+	name = "UNSC chemical illumination stick pouch"
+	desc = "A pouch designed to hold a plethora of chemlights. Refillable with chemlight packs."
+	icon = 'icons/halo/obj/items/clothing/pouches.dmi'
+	icon_state = "glowstick_pouch"
+	can_hold = list(
+		/obj/item/device/flashlight/flare/chemlight,
+		/obj/item/device/flashlight/flare/chemlight/blue,
+		/obj/item/device/flashlight/flare/chemlight/red,
+		/obj/item/device/flashlight/flare/chemlight/yellow,
+		/obj/item/device/flashlight/flare/chemlight/orange,
+		/obj/item/device/flashlight/flare/chemlight/radioisotope,
+	)
+
+/obj/item/storage/pouch/flare/unsc/chemlight/full/fill_preset_inventory()
+	var/list/glowsticks = subtypesof(/obj/item/device/flashlight/flare/chemlight)
+	for(var/i=1 to max_storage_space)
+		var/sticks_to_pick = pick(glowsticks)
+		var/obj/item/device/flashlight/flare/chemlight/forbidden_juice_stick = new sticks_to_pick(src)
+		forbidden_juice_stick.on = FALSE
+
+/obj/item/storage/pouch/flare/unsc/chemlight/full/green
+	icon_state = "glowstick_pouch_green"
+
+/obj/item/storage/pouch/flare/unsc/chemlight/full/green/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/device/flashlight/flare/chemlight(src)
+
+/obj/item/storage/pouch/flare/unsc/chemlight/full/blue
+	icon_state = "glowstick_pouch_blue"
+
+/obj/item/storage/pouch/flare/unsc/chemlight/full/blue/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/device/flashlight/flare/chemlight/blue(src)
+
+/obj/item/storage/pouch/flare/unsc/chemlight/full/red
+	icon_state = "glowstick_pouch_red"
+
+/obj/item/storage/pouch/flare/unsc/chemlight/full/red/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/device/flashlight/flare/chemlight/red(src)
+
+/obj/item/storage/pouch/flare/unsc/chemlight/full/yellow
+	icon_state = "glowstick_pouch_yellow"
+
+/obj/item/storage/pouch/flare/unsc/chemlight/full/yellow/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/device/flashlight/flare/chemlight/yellow(src)
+
+/obj/item/storage/pouch/flare/unsc/chemlight/full/yellow/radioisotope/fill_preset_inventory() //Visually similar enough to share the same pouch icon
+	for(var/i = 1 to storage_slots)
+		new /obj/item/device/flashlight/flare/chemlight/radioisotope(src)
+
+/obj/item/storage/pouch/flare/unsc/chemlight/full/orange
+	icon_state = "glowstick_pouch_orange"
+
+/obj/item/storage/pouch/flare/unsc/chemlight/full/orange/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/device/flashlight/flare/chemlight/orange(src)
 
 //======================
 // HOLSTER POUCHES
@@ -456,6 +558,8 @@
 		/obj/item/ammo_magazine/carbine,
 	)
 
+// ================ ELITES ================
+
 /obj/item/storage/belt/marine/covenant/sangheili
 	name = "\improper Sangheili ammunition belt"
 	icon_state = "sang_minor"
@@ -506,6 +610,8 @@
 	icon_state = "sang_honorguard"
 	item_state = "sang_honorguard"
 
+// ================ GRUNTS ================
+
 /obj/item/storage/belt/marine/covenant/unggoy
 	name = "\improper Unggoy ammunition belt"
 	icon_state = "unggoy_minor"
@@ -540,9 +646,39 @@
 	item_state = "unggoy_specops"
 
 /obj/item/storage/belt/marine/covenant/unggoy/specops_ultra
+
 	name = "\improper Unggoy Special Operations ammunition belt"
 	icon_state = "unggoy_specultra"
 	item_state = "unggoy_specultra"
+
+// ================ JACKALS ================
+
+/obj/item/storage/belt/marine/covenant/ruuhtian
+	name = "\improper Ruuhtian combat belt"
+	desc = "Placeholder."
+	icon_state = "ruuhtian_minor"
+	item_state = "belt_minor"
+	item_icons = list(
+		WEAR_WAIST = 'icons/halo/mob/humans/onmob/clothing/ruuhtian/belts.dmi'
+		)
+
+/obj/item/storage/belt/marine/covenant/ruuhtian/minor
+	name = "\improper Ruuhtian Minor combat belt"
+	desc = "Modular belt for the users personal weapons and field equipment. Features automatic mechanical adjustment, fitting seamlessly to a wearers combat-harness or body securely with no need for manual intervention."
+	icon_state = "ruuhtian_minor"
+	item_state = "ruuhtian_minor"
+
+/obj/item/storage/belt/marine/covenant/ruuhtian/major
+	name = "\improper Ruuhtian Major combat belt"
+	desc = "Modular belt for the users personal weapons and field equipment. Features automatic mechanical adjustment, fitting seamlessly to a wearers combat-harness or body securely with no need for manual intervention."
+	icon_state = "ruuhtian_major"
+	item_state = "ruuhtian_major"
+
+/obj/item/storage/belt/marine/covenant/ruuhtian/ultra
+	name = "\improper Ruuhtian Ultra combat belt"
+	desc = "Modular belt for the users personal weapons and field equipment. Features automatic mechanical adjustment, fitting seamlessly to a wearers combat-harness or body securely with no need for manual intervention."
+	icon_state = "ruuhtian_ultra"
+	item_state = "ruuhtian_ultra"
 
 //======================
 // COVIE BACKPACKS
