@@ -378,6 +378,9 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 		add_verb(src, /client/proc/toggle_rappel_menu)
 		add_verb(src, /client/proc/toggle_fire_support_menu)
 		add_verb(src, /client/proc/gm_lighting)
+// HALO PVE EDIT - START - SHIPMAP LIGHTING VERB
+		add_verb(src, /client/proc/gm_shipmap_lighting)
+// HALO PVE EDIT - END
 		add_verb(src, /client/proc/toggle_droppod_menu)
 		add_verb(src, /client/proc/roll_dices) // RU-PVE STARTS
 		add_verb(src, /client/proc/toggle_admin_only_observe)
@@ -428,6 +431,7 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 		/client/proc/toggle_portrait,
 		/client/proc/toggle_intro,
 		/client/proc/gm_lighting,
+		/client/proc/gm_shipmap_lighting,
 		/client/proc/toggle_droppod_menu,
 		/client/proc/roll_dices, // RU-PVE STARTS
 		/client/proc/toggle_admin_only_observe,
