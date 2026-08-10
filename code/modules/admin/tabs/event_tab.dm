@@ -1097,13 +1097,19 @@
 
 	if(!check_rights(R_ADMIN|R_DEBUG))
 		return FALSE
-	var/duration = 5 SECONDS
-	var/message = "ADMIN TEST"
-	var/text_input = tgui_input_text(usr, "Announcement message", "Message Contents", message, timeout = 5 MINUTES)
-	message = text_input
-	duration = tgui_input_number(usr, "Set the duration of the alert in deci-seconds.", "Duration", 5 SECONDS, 5 MINUTES, 5 SECONDS, 20 SECONDS)
-	var/confirm = tgui_alert(usr, "Are you sure you wish to send '[message]' to all players for [(duration / 10)] seconds?", "Confirm", list("Yes", "No"), 20 SECONDS)
+	// RU-PVE EDIT START
+	var/color = input(src, "Input your message color:", "Color Selector") as color|null
+	if(!color)
+		return FALSE
+	var/text = tgui_input_text(usr, "Announcement message", "Message Contents", "ADMIN TEST", timeout = 5 MINUTES)
+	if(!text)
+		return FALSE
+	var/duration = tgui_input_number(usr, "Set the duration of the alert in deci-seconds.", "Duration", 5 SECONDS, 5 MINUTES, 5 SECONDS, 20 SECONDS)
+	if(!duration)
+		return FALSE
+	var/confirm = tgui_alert(usr, "Are you sure you wish to send '[text]' to all players for [(duration / 10)] seconds?", "Confirm", list("Yes", "No"), 20 SECONDS)
 	if(confirm != "Yes")
 		return FALSE
-	show_blurb(GLOB.player_list, duration, message, TRUE, "center", "center", "#bd2020", "ADMIN")
-	message_admins("[key_name(usr)] sent an admin blurb alert to all players. Alert reads: '[message]' and lasts [(duration / 10)] seconds.")
+	show_blurb(GLOB.player_list, duration, text, TRUE, "center", "center", color)
+	message_admins("[key_name(usr)] sent an admin blurb alert to all players. Alert reads: '[text]' and lasts [(duration / 10)] seconds.")
+	// RU-PVE EDIT END
