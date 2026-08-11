@@ -1,0 +1,5 @@
+2026-08-11:
+  chaos-creations:
+  - rscadd: upstream sync
+  - rscadd: merge upstream 20.06.2026
+  - bugfix: global blurb fix
