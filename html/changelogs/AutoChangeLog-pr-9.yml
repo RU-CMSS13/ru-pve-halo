@@ -1,4 +1,4 @@
 author: "chaos-creations"
 delete-after: True
 changes:
-  - bugfix: "global blurb fix"
+  - rscadd: "upstream 22.08.2026"
