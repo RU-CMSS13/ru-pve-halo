@@ -25,6 +25,8 @@
 /mob
 	var/picksay_cooldown = 0
 
+	var/last_words
+
 /mob/verb/picksay_verb(message as text)
 	set name = "Pick-Say"
 	set category = "IC"
@@ -43,6 +45,8 @@
 
 	if(!client?.attempt_talking(message))
 		return
+
+	last_words = message
 
 	usr.say(message)
 

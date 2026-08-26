@@ -84,3 +84,30 @@
 
 /datum/random_fact/proc/death_grab_stat(datum/entity/statistic/death/fact_death)
 	return 0
+
+/datum/random_fact/last_words/announce()
+	var/datum/entity/statistic/death/death_to_report = null
+
+	if(GLOB.round_statistics && length(GLOB.round_statistics.death_stats_list))
+		for(var/datum/entity/statistic/death/death in GLOB.round_statistics.death_stats_list)
+			if(!check_human && !death.is_xeno)
+				continue
+			if(!check_xeno && death.is_xeno)
+				continue
+			if(!death.last_words)
+				continue
+			death_to_report = death
+			break
+
+	if(!death_to_report)
+		return
+
+	var/name = death_to_report.mob_name
+	var/additional_message = "before dying"
+	if(death_to_report.cause_name)
+		additional_message += " to <b>[death_to_report.cause_name]</b>"
+	additional_message += "."
+
+	message = "<b>[name]</b>'s last words were: <b>\"[death_to_report.last_words]\"</b> [additional_message]"
+
+	return ..()

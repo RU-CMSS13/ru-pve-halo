@@ -22,6 +22,8 @@
 	var/total_revives_done = 0
 	var/total_ib_fixed = 0
 
+	var/last_words
+
 	var/total_brute = 0
 	var/total_burn = 0
 	var/total_oxy = 0
@@ -106,6 +108,7 @@
 	new_death.faction_name = faction
 	new_death.is_xeno = FALSE
 	new_death.area_name = area.name
+	new_death.last_words = last_words
 
 	new_death.cause_name = cause_data?.cause_name
 	var/datum/entity/player/cause_player = get_player_from_key(cause_data?.ckey)
