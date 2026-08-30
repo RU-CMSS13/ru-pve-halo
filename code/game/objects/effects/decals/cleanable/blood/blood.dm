@@ -21,6 +21,8 @@
 	var/randomized = TRUE
 	garbage = FALSE // Keep for atmosphere
 
+	allow_this_to_overlap = TRUE // for scenes.....
+
 /obj/effect/decal/cleanable/blood/Destroy()
 	for(var/datum/disease/D in viruses)
 		D.cure(0)

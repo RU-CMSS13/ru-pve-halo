@@ -594,6 +594,8 @@
 
 	var/weather_smothering_strength = 0
 
+	var/forced_flame_level = 0
+
 /obj/flamer_fire/Initialize(mapload, datum/cause_data/cause_data, datum/reagent/R, fire_spread_amount = 0, datum/reagents/obj_reagents = null, new_flameshape = FLAMESHAPE_DEFAULT, atom/target = null, datum/callback/C, fuel_pressure = 1, fire_type = FIRE_VARIANT_DEFAULT)
 	. = ..()
 	if(!R)
@@ -816,14 +818,18 @@
 /obj/flamer_fire/proc/update_flame()
 	if(burnlevel < 15 && flame_icon != "dynamic")
 		color = "#c1c1c1" //make it darker to make show its weaker.
+
 	var/flame_level = 1
-	switch(firelevel)
-		if(1 to 9)
-			flame_level = 1
-		if(10 to 25)
-			flame_level = 2
-		if(25 to INFINITY) //Change the icons and luminosity based on the fire's intensity
-			flame_level = 3
+	if(forced_flame_level)
+		flame_level = forced_flame_level
+	else
+		switch(firelevel)
+			if(1 to 9)
+				flame_level = 1
+			if(10 to 25)
+				flame_level = 2
+			if(25 to INFINITY)
+				flame_level = 3
 
 	if(initial_burst)
 		flame_level++ //the initial flame burst is 1 level higher for a small time
@@ -943,3 +949,31 @@
 			if(CEILING_IS_PROTECTED(picked_area?.ceiling, get_ceiling_protection_level(aerial_flame_level)))
 				continue
 		fire_spread_recur(picked_turf, cause_data, spread_power, direction, fire_lvl, burn_lvl, f_color, burn_sprite, aerial_flame_level)
+
+/obj/flamer_fire/infinity/Initialize(mapload, ...)
+	. = ..()
+	STOP_PROCESSING(SSobj, src)
+
+/obj/flamer_fire/infinity/weak
+	icon_state = "dynamic_1"
+	forced_flame_level = 1
+
+/obj/flamer_fire/infinity/medium
+	icon_state = "dynamic_2"
+	forced_flame_level = 2
+
+/obj/flamer_fire/infinity/strong
+	icon_state = "dynamic_3"
+	forced_flame_level = 3
+
+/obj/flamer_fire/infinity/random
+	icon_state = "ash"
+
+/obj/flamer_fire/infinity/random/Initialize(mapload, ...)
+	forced_flame_level = rand(1, 3)
+	. = ..()
+
+/obj/flamer_fire/infinity/green/Initialize(mapload, datum/cause_data/cause_data, datum/reagent/R, fire_spread_amount, datum/reagents/obj_reagents, new_flameshape, atom/target, datum/callback/C, fuel_pressure, fire_type)
+	R = new /datum/reagent/napalm/green()
+	fire_type = FIRE_VARIANT_TYPE_B
+	. = ..(mapload, cause_data, R, fire_spread_amount, obj_reagents, new_flameshape, target, C, fuel_pressure, fire_type)
