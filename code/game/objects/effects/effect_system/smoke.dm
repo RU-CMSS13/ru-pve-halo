@@ -225,6 +225,13 @@
 /obj/effect/particle_effect/smoke/bad/red
 	color = "#ca3d33e8"
 
+/obj/effect/particle_effect/smoke/bad/infinity
+	opacity = FALSE
+
+/obj/effect/particle_effect/smoke/bad/infinity/Initialize(mapload, ...)
+	. = ..()
+	STOP_PROCESSING(SSeffects, src)
+
 /////////////////////////////////////////////
 // Sleep smoke
 /////////////////////////////////////////////
