@@ -561,6 +561,8 @@
 	/// Make no noise
 	var/quiet = FALSE
 
+	var/smoldering_type = /obj/structure/prop/brazier/frame/full/campfire/smolder
+
 /obj/structure/prop/brazier/campfire/Initialize()
 	. = ..()
 	START_PROCESSING(SSobj, src)
@@ -634,7 +636,7 @@
 /obj/structure/prop/brazier/campfire/proc/fuel_drain(looping)
 	remaining_fuel--
 	if(!remaining_fuel)
-		new /obj/structure/prop/brazier/frame/full/campfire/smolder(loc)
+		new smoldering_type(loc)
 		qdel(src)
 		return
 	if(!looping || !fuel_stage_time)
