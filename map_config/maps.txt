@@ -124,3 +124,6 @@ endmap
 
 map oni_digsite_451
 endmap
+
+map okopnoe_govno
+endmap

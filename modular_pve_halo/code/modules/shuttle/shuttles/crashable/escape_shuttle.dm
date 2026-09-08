@@ -8,6 +8,9 @@
 	port_direction = WEST
 	max_capacity = 9
 
+	early_crash_land_chance = 100
+	crash_land_chance = 100
+
 /datum/map_template/shuttle/bumblebee_west
 	name = "bumblebee"
 	shuttle_id = LIFEBOAT_BUMBLEBEE_WEST

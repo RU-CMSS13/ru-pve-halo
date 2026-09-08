@@ -132,7 +132,7 @@
 
 	time_to_sound -= delta_time
 	if(time_to_sound <= 0)
-		playsound(loc, 'core_ru/sound/engine.ogg', 40, FALSE, 3)
+		playsound(loc, 'core_ru/sounds/engine.ogg', 40, FALSE, 3)
 		time_to_sound = initial(time_to_sound)
 
 /obj/structure/machinery/generator_okopnoe_govno/get_examine_text(mob/user)
@@ -240,25 +240,26 @@
 	desc = "In these days, electrical noise follows people everywhere. Not always intelligible, but always unstoppable. It is like radio interference. It seems to intensify as it approaches the boundary of known space. Sometimes you can make out words in the noise. A strange whisper that makes no sense."
 	icon = 'core_ru/icons/noise.dmi'
 	icon_state = "noise1"
-//	var/on = TRUE //virubator 3000
-
-//	light_range = 3
-//	light_power = 0.8
-//	light_color = "#ffffff"
-
+	var/noise_on = FALSE //virubator 3000
+/*
+	light_range = 1
+	light_power = 0.8
+	light_color = "#ffffff"
+*/
 /turf/closed/noise/Initialize(mapload, ...)
 	. = ..()
 	icon_state = "noise[rand(1,3)]"
-//	addtimer(CALLBACK(src, .proc/playnoise), rand(10,20) SECONDS)
-/*
+	if(!noise_on)
+		return
+	addtimer(CALLBACK(src, PROC_REF(playnoise)), rand(8,12) SECONDS)
+
 /turf/closed/noise/proc/playnoise()
-	if(QDELETED(src) || !on)
+	if(QDELETED(src))
 		return
 
-	playsound(src, pick('something/sounds/noise.ogg', 'something/sounds/noise2.ogg','something/sounds/noise3.ogg'), 25, 0, 4)
+	playsound(src, pick('core_ru/sounds/noise.ogg', 'core_ru/sounds/noise2.ogg', 'core_ru/sounds/noise3.ogg'), 25, TRUE, 12, VOLUME_AMB, falloff = 3)
 
-	addtimer(CALLBACK(src, .proc/playnoise), rand(10,20) SECONDS)
-*/
+	addtimer(CALLBACK(src, PROC_REF(playnoise)), rand(8,12) SECONDS)
 
 /obj/structure/rocks
 	name = "rock pile"
@@ -277,7 +278,7 @@
 		to_chat(user, SPAN_WARNING("A [W] won't work here, you need to find a pickaxe!"))
 		return ..()
 
-	playsound(loc, 'core_ru/sound/pickaxe.ogg', 25, 1)
+	playsound(loc, 'core_ru/sounds/pickaxe.ogg', 25, 1)
 	to_chat(user, SPAN_NOTICE("You started clearing away a pile of rocks with a [W]!"))
 
 	if(!do_after(user, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
@@ -294,3 +295,44 @@
 	new ore_gacha(loc)
 
 	qdel(src)
+
+/obj/structure/ladder/prefab_door
+	name = "prefabricated door"
+	desc = "The door, maybe you can enter."
+	icon = 'icons/obj/structures/props/ice_colony/fabs_tileset.dmi'
+	icon_state = "fabdoor"
+	layer = DOOR_CLOSED_LAYER
+
+	climb_time = 3 SECONDS
+	climb_sound = 'sound/effects/doorcreaky.ogg'
+
+	var/door_color
+
+/obj/structure/ladder/prefab_door/Initialize(mapload)
+	. = ..()
+	update_icon()
+
+/obj/structure/ladder/prefab_door/update_icon()
+	overlays.Cut()
+	if(door_color)
+		overlays += image(icon, "+[door_color]")
+
+// FLOODLIGHT
+
+/obj/structure/machinery/colony_floodlight/tyrargo
+	name = "\improper UE-92/B Area Illuminator"
+	desc = "Varient of the UE-92, a large deployable floodlight. This version is less powerful but it houses an internal power source that allows it to operate for several hours without being linked to a power generator."
+	icon = 'core_ru/icons/illuminator.dmi'
+	icon_state = "floodlight-off"
+	health = 200
+	lum_value = 8
+
+	floodlight_color ="#e7c0a4"
+
+/obj/structure/machinery/colony_floodlight/tyrargo/update_icon()
+	if(damaged)
+		icon_state = "floodlight-off"
+	else if(is_lit)
+		icon_state = "floodlight-on"
+	else
+		icon_state = "floodlight-off"

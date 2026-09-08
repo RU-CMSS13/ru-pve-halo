@@ -10716,9 +10716,8 @@
 /turf/open/floor/almayer,
 /area/dark_was_the_night/cryo_bay/two)
 "KL" = (
-/obj/docking_port/stationary/marine_dropship/pelican_lz/hangar,
 /turf/open/floor/almayer/plate,
-/area/dark_was_the_night/hangar)
+/area/almayer/shipboard/brig/armory)
 "KN" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"

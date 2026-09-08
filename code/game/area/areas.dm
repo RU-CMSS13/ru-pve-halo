@@ -86,6 +86,7 @@
 	// Day-Night settings
 	var/daytime_affected = TRUE
 
+	var/crash_site = FALSE
 
 /area/New()
 	// This interacts with the map loader, so it needs to be set immediately

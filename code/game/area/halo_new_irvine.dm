@@ -331,11 +331,49 @@
 	icon_state = "BEACH - OUTSKIRT"
 	powernet_name = "New Irvine - Nature Park"
 
+/area/new_irvine/nature_park/crash_site
+	crash_site = TRUE
+
 /area/new_irvine/nature_park/indoors
 	name = "New Irvine - Nature Park - Indoors"
 	icon_state = "BEACH - OUTSKIRT"
 	powernet_name = "New Irvine - Nature Park"
 	ceiling = CEILING_METAL
+
+/area/new_irvine/nature_park/cave
+	name = "New Irvine - Nature Park - Cave"
+	icon_state = "BEACH - CAVE"
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
+	ceiling_muffle = FALSE
+	ambience_exterior = AMBIENCE_CAVE
+	soundscape_playlist = SCAPE_PL_CAVE
+	base_muffle = MUFFLE_HIGH
+
+/area/new_irvine/nature_park/cave/bunker
+	name = "Cave - Old Bunker"
+	icon_state = "BUNKER - CAVE"
+	powernet_name = "Bunker - Cave"
+
+/area/new_irvine/bunker_okop_1
+	name = "Okop - Odin"
+	icon_state = "BUNKER - 1"
+	powernet_name = "Bunker - Cave"
+
+/area/new_irvine/bunker_okop_2
+	name = "Okop - Dva"
+	icon_state = "BUNKER - 2"
+	powernet_name = "Bunker - Cave"
+
+/area/new_irvine/bunker_okop_3
+	name = "Okop - Tri"
+	icon_state = "BUNKER - 3"
+	powernet_name = "Bunker - Cave"
+
+/area/new_irvine/bunker_okop_4
+	name = "Okop - Chetire"
+	icon_state = "BUNKER - 4"
+	powernet_name = "Bunker - Cave"
 
 //
 
