@@ -787,6 +787,15 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	fire_flag = FLORA_BURN_NO_SPREAD
 	health = 150
 
+/obj/structure/flora/forest/handle_vehicle_bump(obj/vehicle/multitile/V)
+	V.move_momentum -= V.move_momentum * 0.5
+
+	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
+	playsound(src, 'sound/effects/woodhit.ogg', 20)
+	qdel(src)
+	return TRUE
+
+
 //Baby Bush
 
 /obj/structure/flora/forest/baby_bush
@@ -804,6 +813,8 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon = 'icons/obj/flora/new_irvine_small_tree.dmi'
 	icon_state = "funnyTree_shadow"
 	cut_level = PLANT_CUT_MACHETE
+
+	density = TRUE
 
 	var/loot = /obj/item/stack/sheet/wood
 
@@ -849,6 +860,8 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon_state = "stump1"
 	cut_level = PLANT_CUT_MACHETE
 
+	density = TRUE
+
 	var/loot = /obj/item/stack/sheet/wood
 
 /obj/structure/flora/forest/logs_n_stumps/attackby(obj/item/W, mob/living/user)
@@ -877,6 +890,8 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon = 'icons/obj/flora/new_irvine_pines.dmi'
 	icon_state = "pine1_shadow"
 	cut_level = PLANT_CUT_MACHETE
+
+	density = TRUE
 
 	var/loot = /obj/item/stack/sheet/wood
 

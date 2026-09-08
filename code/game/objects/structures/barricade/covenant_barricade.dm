@@ -59,6 +59,8 @@
 	light_power = 0.5
 	light_color = LIGHT_COLOR_BLUE
 
+	chemical = "cov_fuel"
+
 /obj/structure/prop/static_tank/fuel/cov
 	name = "Large Plasma Battery"
 	desc = "Covenant Plasma Battery"

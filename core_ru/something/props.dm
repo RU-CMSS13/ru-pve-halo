@@ -336,3 +336,36 @@
 		icon_state = "floodlight-on"
 	else
 		icon_state = "floodlight-off"
+
+// COV FUEL
+
+/datum/reagent/fuel/covenant
+	name = "blasma"
+	id = "cov_fuel"
+	color = COLOR_STRONG_VIOLET
+	burncolor = LIGHT_COLOR_PURPLE
+
+// FOG
+
+/obj/structure/blocker/invisible_wall/fog
+	name = "dense fog"
+	desc = "It looks way too dangerous to traverse. Best wait until it has cleared up."
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "smoke"
+	opacity = TRUE
+
+/obj/structure/blocker/invisible_wall/fog/New()
+	..()
+	icon_state = initial(icon_state)
+
+/obj/structure/blocker/invisible_wall/fog/shipmap_cov
+	name = "dense fog"
+	desc = "Мне пока рано туда."
+
+/obj/structure/blocker/invisible_wall/fog/groundmap_unsc_forces
+	name = "dense fog"
+	desc = "Что-то там слишком темно и страшно, наверно туда стоит пойти через какое-то время."
+
+/obj/structure/blocker/invisible_wall/fog/groundmap_cov
+	name = "dense fog"
+	desc = "Что-то там слишком темно и страшно, наверно туда стоит пойти через какое-то время."
