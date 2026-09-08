@@ -396,12 +396,13 @@
 
 /obj/item/storage/unsc_speckit/himat
 	name = "HIMAT missile launcher equipment case"
-	can_hold = list(/obj/item/mortar_kit/himat, /obj/item/device/binoculars/range/designator, /obj/item/storage/box/upp_radio_key/jtac, /obj/item/storage/backpack/marine/mortarpack, /obj/item/storage/belt/gun/mortarbelt)
-	storage_slots = 5
+	can_hold = list(/obj/item/mortar_kit/himat, /obj/item/device/binoculars/range/designator, /obj/item/storage/box/upp_radio_key/jtac, /obj/item/storage/backpack/marine/mortarpack, /obj/item/storage/belt/gun/mortarbelt, /obj/item/device/multitool/upp)
+	storage_slots = 6
 
 /obj/item/storage/unsc_speckit/himat/fill_preset_inventory()
 	new /obj/item/mortar_kit/himat(src)
 	new /obj/item/device/binoculars/range/designator(src)
+	new /obj/item/device/multitool/upp(src)
 	new /obj/item/storage/box/upp_radio_key/jtac(src)
 	new /obj/item/storage/backpack/marine/mortarpack(src)
 	new /obj/item/storage/belt/gun/mortarbelt(src)

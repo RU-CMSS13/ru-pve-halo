@@ -333,7 +333,7 @@
 	hijack.fire()
 	GLOB.alt_ctrl_disabled = TRUE
 
-	marine_announcement("Unknown fault in remote flight control. Resolving as possible hijack. Marking dropship as possibly hostile and disconnecting from sensor matrix.", "Dropship Alert", 'sound/misc/notice2.ogg', logging = ARES_LOG_SECURITY)
+	marine_announcement("Тревога. Десантные капсулы Ковенанта на подлёте. Время до контакта - три минуты. Всему личному составу - к ближайшим оружейным. Приготовиться к отражению абордажа.", "Dropship Alert", 'sound/misc/notice2.ogg', logging = ARES_LOG_SECURITY)
 	log_ares_flight("Unknown", "Unknown fault in remote flight control. Resolving as possible hijack. Marking dropship as possibly hostile and disconnecting from sensor matrix.")
 
 	var/mob/living/carbon/xenomorph/xeno = user
