@@ -369,3 +369,39 @@
 /obj/structure/blocker/invisible_wall/fog/groundmap_cov
 	name = "dense fog"
 	desc = "Что-то там слишком темно и страшно, наверно туда стоит пойти через какое-то время."
+
+/obj/item/storage/unsc_speckit/m2c
+	name = "M247 GPMG equipment case"
+	can_hold = list(/obj/item/storage/box/guncase/m2c, /obj/item/ammo_magazine/m2c)
+	storage_slots = 7
+
+/obj/item/storage/unsc_speckit/m2c/fill_preset_inventory()
+	new /obj/item/storage/box/guncase/m2c(src)
+	new /obj/item/ammo_magazine/m2c(src)
+	new /obj/item/ammo_magazine/m2c(src)
+	new /obj/item/ammo_magazine/m2c(src)
+	new /obj/item/ammo_magazine/m2c(src)
+	new /obj/item/ammo_magazine/m2c(src)
+	new /obj/item/ammo_magazine/m2c(src)
+
+/obj/item/storage/box/upp_radio_key/jtac
+	name = "box of JTAC radio keys"
+	icon_lid = "uppkeycaseciv_lid"
+
+/obj/item/storage/box/upp_radio_key/jtac/fill_preset_inventory()
+	new /obj/item/device/encryptionkey/jtac(src)
+	new /obj/item/device/encryptionkey/jtac(src)
+	new /obj/item/device/encryptionkey/jtac(src)
+	new /obj/item/device/encryptionkey/jtac(src)
+
+/obj/item/storage/unsc_speckit/himat
+	name = "HIMAT missile launcher equipment case"
+	can_hold = list(/obj/item/mortar_kit/himat, /obj/item/device/binoculars/range/designator, /obj/item/storage/box/upp_radio_key/jtac, /obj/item/storage/backpack/marine/mortarpack, /obj/item/storage/belt/gun/mortarbelt)
+	storage_slots = 5
+
+/obj/item/storage/unsc_speckit/himat/fill_preset_inventory()
+	new /obj/item/mortar_kit/himat(src)
+	new /obj/item/device/binoculars/range/designator(src)
+	new /obj/item/storage/box/upp_radio_key/jtac(src)
+	new /obj/item/storage/backpack/marine/mortarpack(src)
+	new /obj/item/storage/belt/gun/mortarbelt(src)
