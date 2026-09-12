@@ -384,6 +384,8 @@
 				sound = pick('sound/items/writing_noises/paper_writing_1.wav', 'sound/items/writing_noises/paper_writing_2.wav', 'sound/items/writing_noises/paper_writing_3.wav', 'sound/items/writing_noises/paper_writing_4.ogg')
 			if("gurgle")
 				sound = pick('sound/effects/gurgle1.ogg', 'sound/effects/gurgle2.ogg', 'sound/effects/gurgle3.ogg', 'sound/effects/gurgle4.ogg')
+			if("rocks")
+				sound = pick('sound/soundscape/rocksfalling1.ogg', 'sound/soundscape/rocksfalling2.ogg')
 			// Weapons/bullets
 			if("shell_load")
 				sound = pick('sound/weapons/shell_load1.ogg','sound/weapons/shell_load2.ogg','sound/weapons/shell_load3.ogg','sound/weapons/shell_load4.ogg')

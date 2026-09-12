@@ -425,7 +425,7 @@
 
 	//This is where things change and shit gets real
 
-	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
+	marine_announcement("Пробитие корпуса! Они на борту! Все к оружию!" , "EMERGENCY", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
 
 	for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
 		to_chat(observer, SPAN_DEADSAY(FONT_SIZE_LARGE("The dropship is about to impact [get_area_name(T_trg)]" + " [OBSERVER_JMP(observer, T_trg)]")))

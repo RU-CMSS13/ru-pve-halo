@@ -4,6 +4,8 @@
 	required_players = 0
 	votable = TRUE
 
+	corpses_to_spawn = 50
+
 	flags_round_type = MODE_INFESTATION|MODE_NEW_SPAWN|MODE_NO_XENO_EVOLVE
 
 	var/list/squad_limit = list(

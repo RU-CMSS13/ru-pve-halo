@@ -68,7 +68,12 @@
 
 		var/list/area/potential_areas = SSmapping.areas_in_z["[ground_z_level]"]
 
-		var/area/area_picked = pick(potential_areas)
+		var/list/area/priority_areas = list()
+		for(var/area/checked_area as anything in potential_areas)
+			if(checked_area.crash_site)
+				priority_areas += checked_area
+
+		var/area/area_picked = length(priority_areas) ? pick(priority_areas) : pick(potential_areas)
 
 		var/list/potential_turfs = list()
 

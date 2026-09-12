@@ -774,3 +774,163 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	desc = "Looks like some of that fruit might be edible."
 	icon_tag = "plant"
 	variations  = 7
+
+//Forest
+
+/obj/structure/flora/forest
+	name = "forest foliage"
+	icon = 'icons/turf/floors/auto_forest_irvine.dmi'
+	icon_state = "babybush_shadow"
+	density = FALSE
+	layer = ABOVE_XENO_LAYER
+	projectile_coverage = PROJECTILE_COVERAGE_NONE
+	fire_flag = FLORA_BURN_NO_SPREAD
+	health = 150
+
+/obj/structure/flora/forest/handle_vehicle_bump(obj/vehicle/multitile/V)
+	V.move_momentum -= V.move_momentum * 0.5
+
+	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
+	playsound(src, 'sound/effects/woodhit.ogg', 20)
+	qdel(src)
+	return TRUE
+
+
+//Baby Bush
+
+/obj/structure/flora/forest/baby_bush
+	icon = 'icons/turf/floors/auto_forest_irvine.dmi'
+	icon_state = "babybush_shadow"
+	cut_level = PLANT_CUT_KNIFE
+
+/obj/structure/flora/forest/baby_bush/noshadow
+	icon_state = "babybush_noshadow"
+
+//Small Tree
+
+/obj/structure/flora/forest/small_tree
+	name = "spindly tree"
+	icon = 'icons/obj/flora/new_irvine_small_tree.dmi'
+	icon_state = "funnyTree_shadow"
+	cut_level = PLANT_CUT_MACHETE
+
+	density = TRUE
+
+	var/loot = /obj/item/stack/sheet/wood
+
+/obj/structure/flora/forest/small_tree/attackby(obj/item/W, mob/living/user)
+	if(!istype(W, /obj/item/weapon/sword/machete))
+		to_chat(user, SPAN_WARNING("You can't cut down a tree with [W], find something better!"))
+		return
+	if(prob(60))
+		var/obj/item/stack/I = new loot(loc)
+		playsound(loc, 'sound/effects/woodhit.ogg', 25, 1)
+		I.amount = rand(1,5)
+		I.explosion_throw(20)
+	var/mob/living/carbon/human/H = user
+	H.stamina.apply_damage(10)
+	..()
+
+/obj/structure/flora/forest/small_tree/no_shadow
+	icon_state = "funnyTree_noshadow"
+
+//Bush
+
+/obj/structure/flora/forest/bush
+	name = "bushes"
+	icon = 'icons/obj/flora/new_irvine_forest_64x64.dmi'
+	icon_state = "mediumBush_shadow"
+	cut_level = PLANT_CUT_KNIFE
+
+/obj/structure/flora/forest/bush/no_shadow
+	icon_state = "mediumBush_noshadow"
+
+/obj/structure/flora/forest/bush/large
+	icon = 'icons/obj/flora/new_irvine_forest_64x64.dmi'
+	icon_state = "largeBush_shadow"
+
+/obj/structure/flora/forest/bush/large/no_shadow
+	icon_state = "largeBush_noshadow"
+
+//stumps
+
+/obj/structure/flora/forest/logs_n_stumps
+	name = "tree remains"
+	icon = 'icons/obj/flora/new_irvine_forest_64x64.dmi'
+	icon_state = "stump1"
+	cut_level = PLANT_CUT_MACHETE
+
+	density = TRUE
+
+	var/loot = /obj/item/stack/sheet/wood
+
+/obj/structure/flora/forest/logs_n_stumps/attackby(obj/item/W, mob/living/user)
+	if(!istype(W, /obj/item/weapon/sword/machete))
+		to_chat(user, SPAN_WARNING("You can't cut down a tree with [W], find something better!"))
+		return
+	if(prob(60))
+		var/obj/item/stack/I = new loot(loc)
+		playsound(loc, 'sound/effects/woodhit.ogg', 25, 1)
+		I.amount = rand(1,5)
+		I.explosion_throw(20)
+	var/mob/living/carbon/human/H = user
+	H.stamina.apply_damage(10)
+	..()
+
+/obj/structure/flora/forest/logs_n_stumps/two
+	icon_state = "stump2"
+
+/obj/structure/flora/forest/logs_n_stumps/fallen
+	icon_state = "fallen_log"
+
+//Forest Trees
+
+/obj/structure/flora/forest/pines
+	name = "pine tree"
+	icon = 'icons/obj/flora/new_irvine_pines.dmi'
+	icon_state = "pine1_shadow"
+	cut_level = PLANT_CUT_MACHETE
+
+	density = TRUE
+
+	var/loot = /obj/item/stack/sheet/wood
+
+/obj/structure/flora/forest/pines/attackby(obj/item/W, mob/living/user)
+	if(!istype(W, /obj/item/weapon/sword/machete))
+		to_chat(user, SPAN_WARNING("You can't cut down a tree with [W], find something better!"))
+		return
+	if(prob(60))
+		var/obj/item/stack/I = new loot(loc)
+		playsound(loc, 'sound/effects/woodhit.ogg', 25, 1)
+		I.amount = rand(1,5)
+		I.explosion_throw(20)
+	var/mob/living/carbon/human/H = user
+	H.stamina.apply_damage(10)
+	..()
+
+/obj/structure/flora/forest/pines/noshadow
+	icon_state = "pine1no_shadow"
+
+/obj/structure/flora/forest/pines/two
+	icon_state = "pine2_shadow"
+
+/obj/structure/flora/forest/pines/two/noshadow
+	icon_state = "pine2no_shadow"
+
+/obj/structure/flora/forest/pines/three
+	icon_state = "pine3_shadow"
+
+/obj/structure/flora/forest/pines/three/noshadow
+	icon_state = "pine3no_shadow"
+
+/obj/structure/flora/forest/pines/four
+	icon_state = "pine4_shadow"
+
+/obj/structure/flora/forest/pines/four/noshadow
+	icon_state = "pine4no_shadow"
+
+/obj/structure/flora/forest/pines/five
+	icon_state = "pine5_shadow"
+
+/obj/structure/flora/forest/pines/five/noshadow
+	icon_state = "pine5no_shadow"

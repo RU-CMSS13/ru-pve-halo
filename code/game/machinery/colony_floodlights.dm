@@ -107,6 +107,8 @@
 	var/repair_state = FLOODLIGHT_REPAIR_UNSCREW
 	health = 150
 
+	var/floodlight_color = "#FFEFD2"
+
 /obj/structure/machinery/colony_floodlight/Destroy()
 	if(fswitch)
 		fswitch.floodlist -= src
@@ -304,7 +306,7 @@
 /obj/structure/machinery/colony_floodlight/proc/toggle_light()
 	is_lit = !is_lit
 	if(!damaged)
-		set_light(is_lit ? lum_value : 0)
+		set_light(is_lit ? lum_value : 0, l_color = floodlight_color)
 	update_icon()
 	return is_lit
 

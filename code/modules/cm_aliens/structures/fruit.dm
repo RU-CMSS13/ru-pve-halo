@@ -485,12 +485,24 @@
 	to_chat(src, SPAN_XENODANGER("We are too small to pick up \the [F]!"))
 	return
 
+/obj/item/reagent_container/food/snacks/resin_fruit/light
+	light_on = TRUE
+	light_range = 2
+	light_power = 0.8
+	light_color = "#17991B"
+
 /obj/item/reagent_container/food/snacks/resin_fruit/greater
 	name = XENO_FRUIT_GREATER
 	desc = "A strange large fruit that you could eat... if you REALLY wanted to. Its roots seem to twitch every so often."
 	icon_state = "fruit_greater_item"
 	bitesize = 4
 	fruit_type = /obj/effect/alien/resin/fruit/greater
+
+/obj/item/reagent_container/food/snacks/resin_fruit/greater/light
+	light_on = TRUE
+	light_range = 3
+	light_power = 1
+	light_color = "#17991B"
 
 /obj/item/reagent_container/food/snacks/resin_fruit/greater/add_juice()
 	reagents.add_reagent("fruit_resin", 60)
@@ -501,6 +513,12 @@
 	icon_state = "fruit_unstable_item"
 	bitesize = 4
 	fruit_type = /obj/effect/alien/resin/fruit/unstable
+
+/obj/item/reagent_container/food/snacks/resin_fruit/unstable/light
+	light_on = TRUE
+	light_range = 2
+	light_power = 1
+	light_color = "#179973"
 
 /obj/item/reagent_container/food/snacks/resin_fruit/unstable/add_juice()
 	reagents.add_reagent("fruit_resin", 30)
@@ -516,6 +534,12 @@
 	reagents.add_reagent("fruit_resin", 30)
 	reagents.add_reagent(PLASMA_PHEROMONE, 30)
 
+/obj/item/reagent_container/food/snacks/resin_fruit/spore/light
+	light_on = TRUE
+	light_range = 2
+	light_power = 0.8
+	light_color = "#994617"
+
 /obj/item/reagent_container/food/snacks/resin_fruit/speed
 	name = XENO_FRUIT_SPEED
 	desc = "A strange plasma-filled fruit that you could eat... if you REALLY wanted to. Its roots seem to twitch every so often."
@@ -526,6 +550,12 @@
 	reagents.add_reagent("fruit_resin", 30)
 	reagents.add_reagent(PLASMA_CATECHOLAMINE, 30)
 
+/obj/item/reagent_container/food/snacks/resin_fruit/speed/light
+	light_on = TRUE
+	light_range = 2
+	light_power = 0.8
+	light_color = "#9559ca80"
+
 /obj/item/reagent_container/food/snacks/resin_fruit/plasma
 	name = XENO_FRUIT_PLASMA
 	icon_state = "fruit_plasma_item"
@@ -534,3 +564,9 @@
 /obj/item/reagent_container/food/snacks/resin_fruit/plasma/add_juice()
 	reagents.add_reagent("fruit_resin", 30)
 	reagents.add_reagent(PLASMA_PURPLE, 30)
+
+/obj/item/reagent_container/food/snacks/resin_fruit/plasma/light
+	light_on = TRUE
+	light_range = 2
+	light_power = 0.8
+	light_color = "#287A90"
